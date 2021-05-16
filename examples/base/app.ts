@@ -85,3 +85,24 @@ axios({
   url: '/base/buffer',
   data: arr
 })
+
+// 验证headers
+axios({
+  method: 'post',
+  url: '/base/post',
+  headers: {
+    'content-type': 'application/json',
+    'Accept': 'application/json, text/plain, */*'
+  },
+  data: {
+    bar: 'baz'
+  }
+})
+
+const paramsString = 'q=URLUtils.searchParams&topic=api';
+const searchParams = new URLSearchParams(paramsString);
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: searchParams
+})
