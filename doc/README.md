@@ -1,27 +1,25 @@
-# itjc8.com收集整理
-
 # ts-axios-doc
 
-TypeScript 从零实现 axios 文档教材
+TypeScript 从零实现 axios 需求文档
 
 ## 启动电子书
 
-首先 clone 本项目：
+1.首先进入 doc 目录：
 
 ```bash
-git clone https://git.imooc.com/coding-330/ts-axios-doc.git
+cd doc
 ```
 
-进入 `ts-axios-doc` 目录后安装项目依赖：
+2.安装项目依赖：
 
 ```bash
 npm install
 ```
 
-安装依赖后运行电子书：
+3.安装依赖后运行电子书：
 
 ```bash
 npm run dev
 ```
 
-浏览器打开 `http://localhost:8080/ts-axios/` 即可。
+4.浏览器打开 `http://localhost:8080/ts-axios/` 即可。
