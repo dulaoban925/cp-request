@@ -1,5 +1,5 @@
 /** URL相关的辅助函数 */
-import { isDate, isObject } from './util';
+import { isDate, isPlainObject } from './util';
 
 /**
  * encode URL拼接参数
@@ -48,7 +48,7 @@ export function buildURL(url: string, params?: any): string {
       if (isDate(value)) {
         // Date URL 形式：/base/get?date=2019-04-01T05:55:39.030Z，date后拼接的是date.toISOString()后的结果
         value = value.toISOString();
-      } else if (isObject(value)) {
+      } else if (isPlainObject(value)) {
         // 对象 URL 形式：/base/get?foo=%7B%22bar%22:%22baz%22%7D，foo 后拼接的是{"bar":"baz"} encode 后的结果
         value = JSON.stringify(value);
       }

@@ -1,5 +1,6 @@
 import axios from '../../src/index';
 
+// 验证url
 axios({
   method: 'get',
   url: '/base/get',
@@ -67,4 +68,20 @@ axios({
   params: {
     bar: 'baz'
   }
+})
+
+// 验证data
+axios({
+  method: 'post',
+  url: '/base/post',
+  data: {
+    bar: 'baz'
+  }
+})
+
+const arr = new Int32Array([21, 31]);
+axios({
+  method: 'post',
+  url: '/base/buffer',
+  data: arr
 })
