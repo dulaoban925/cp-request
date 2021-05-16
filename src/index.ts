@@ -1,12 +1,12 @@
-import { AxiosRequestConfig } from "./types";
+import { AxiosPromise, AxiosRequestConfig } from "./types";
 import { xhr } from "./xhr";
 import { buildURL } from "./helpers/url";
 import { transformRequest } from './helpers/data';
 import { processHeaders } from './helpers/headers';
 
-function Axios(config: AxiosRequestConfig) {
+function Axios(config: AxiosRequestConfig): AxiosPromise {
     processConfig(config);
-    xhr(config);
+    return xhr(config);
 }
 
 /** 处理config参数 */

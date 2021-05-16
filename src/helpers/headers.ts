@@ -14,6 +14,7 @@ function normalizeHeaderName(headers: any, normalizedName: string): void {
   })
 }
 
+/** 处理请求头 headers 配置 */
 export function processHeaders(headers: any, data: any): any {
   normalizeHeaderName(headers, 'Content-Type');
   if (isPlainObject(data)) {
@@ -22,4 +23,25 @@ export function processHeaders(headers: any, data: any): any {
     }
   }
   return headers;
+}
+
+/** 解析响应头 headers 字符串，返回对象结构 */
+export function parseHeaders(headers: string): any {
+  const parsed = Object.create(null);
+  if (!headers) {
+    return parsed;
+  }
+  headers.split('\r\n').forEach((line) => {
+    let [key, value] = line.split(':');
+    key = key.trim().toLowerCase();
+    if (!key) {
+      return;
+    }
+    if (value) {
+      value = value.trim();
+    }
+    parsed[key] = value;
+  })
+
+  return parsed;
 }
