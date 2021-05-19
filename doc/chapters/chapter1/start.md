@@ -1,4 +1,4 @@
-# itjc8.com收集整理
+
 
 # 编写第一个 TypeScript 程序
 

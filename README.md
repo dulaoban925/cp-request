@@ -1,6 +1,7 @@
-# ts-axios：使用TypeScript重构Axios
+# ts-axios
+使用TypeScript重构Axios
 
-## 环境安装
+## 安装项目依赖
   
 ```
 // 安装package.json中插件的最新版本
