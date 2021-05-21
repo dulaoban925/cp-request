@@ -1,7 +1,7 @@
-import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from "./types";
-import { parseHeaders } from './helpers/headers';
-import { transformResponse } from './helpers/data';
-import { createError } from "./helpers/error";
+import { AxiosPromise, AxiosRequestConfig, AxiosResponse } from "../types";
+import { parseHeaders } from '../helpers/headers';
+import { transformResponse } from '../helpers/data';
+import { createError } from "../helpers/error";
 
 /**
  * 实际发送请求的方法，使用XMLHttpRequest
@@ -16,7 +16,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         if (timeout) {
             request.timeout = timeout;
         }
-        request.open(method.toUpperCase(), url, true);
+        request.open(method.toUpperCase(), url!, true);
         request.onreadystatechange = function handleLoad() {
             // 请求未结束，不执行后续逻辑
             if (request.readyState !== 4) {
