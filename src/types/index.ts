@@ -24,7 +24,7 @@ export interface AxiosResponse<T = any> {
     request: any; // 请求 XMLHttpRequest 对象实例
 }
 
-/** 
+/**
  * Axios 请求返回类型，返回 Promise 对象, 继承于 Promise<AxiosRespose> 泛型接口
  * 这样当 axios 返回 AxiosPromise 类型，那么 resolve 函数中的参数就是一个 AxiosRespose 类型
  */
@@ -45,6 +45,10 @@ export interface AxiosError extends Error {
  * Axios 类型
  */
 export interface Axios {
+    interceptors: {
+      request: AxiosInterceptorManager<AxiosRequestConfig>,
+      response: AxiosInterceptorManager<AxiosResponse>
+    }
     request: <T = any>(config: AxiosRequestConfig) => AxiosPromise<T>;
     get: <T = any>(url: string, config?: AxiosRequestConfig) => AxiosPromise<T>;
     delete: <T = any>(url: string, config?: AxiosRequestConfig) => AxiosPromise<T>;
@@ -58,4 +62,20 @@ export interface Axios {
 export interface AxiosInstance extends Axios {
     <T = any>(config: AxiosRequestConfig): AxiosPromise<T>;
     <T = any>(url: any, config?: AxiosRequestConfig): AxiosPromise<T>;
+}
+
+/** 拦截器管理类型 */
+export interface AxiosInterceptorManager<T = any> {
+    // 添加拦截器，返回拦截器在拦截器容器中的id
+    use(resolved: ResolvedFn<T>, reject?: RejectFn): number;
+    // 通过拦截器的id，删除对应的拦截器
+    eject(id: number): void;
+}
+
+export interface ResolvedFn<T = any> {
+    (val: T): T | Promise<T>
+}
+
+export interface RejectFn {
+    (val: any): any;
 }
