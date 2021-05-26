@@ -1,5 +1,6 @@
 /** 处理 header 辅助函数 */
-import { isPlainObject } from './util';
+import { deepMerge, isPlainObject } from './util'
+import { Method } from '../types'
 
 /** 将 headers 的属性名称标准化，如支持前端配置名称为 content-type， 但是需要转为 Content-Type */
 function normalizeHeaderName(headers: any, normalizedName: string): void {
@@ -44,4 +45,26 @@ export function parseHeaders(headers: string): any {
   })
 
   return parsed;
+}
+
+/** 平铺默认 headers 配置 */
+export function flattenHeaders(headers: any, method: Method): any {
+  if (!headers) {
+    return headers;
+  }
+  /**
+   * 默认 headers 配置结构
+   * headers: {
+   *   common: {}, // 所有请求方法均可用的 headers 配置
+   *   post: {} // 指定请求方法的 headers 配置
+   * }
+   */
+  headers = deepMerge(headers.common, headers[method], headers);
+  // 需要从 headers 中删除的属性
+  const propsToDelete = ['common', 'get', 'post', 'delete', 'put', 'head', 'options', 'patch'];
+  propsToDelete.forEach(prop => {
+    delete headers[prop];
+  })
+
+  return headers;
 }
