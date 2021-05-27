@@ -27,7 +27,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
                 return;
             }
             const responseHeaders = parseHeaders(request.getAllResponseHeaders());
-            const responseData = transformResponse(responseType && responseType === 'text' ? request.responseText : request.response);
+            const responseData = responseType && responseType === 'text' ? request.responseText : request.response;
             const response: AxiosResponse = {
                 data: responseData,
                 status: request.status,

@@ -27,6 +27,18 @@ export interface AxiosRequestConfig {
   responseType?: XMLHttpRequestResponseType; // 响应数据类型
   timeout?: number; // 超时时间，单位毫秒ms
 
+  /**
+   * 函数或函数数组，允许在请求发送到服务器之前对其进行修改，只适用于 post，put，patch 等携带参数体的方法
+   * 如果是数组，则最后一个函数一定要返回一个字符串或 FormData, URLSearchParams, Blob 等类型作为 xhr.send 的参数
+   * 在 transform 的过程中可以修改 headers
+   */
+  transformRequest?: AxiosTransformer | AxiosTransformer[];
+  /**
+   * 函数或函数数组，允许把响应数据传递给 then 或者 catch 之前对其进行修改
+   * 如果是数组，数组的每一个函数都是转换函数，像管道一样依次执行，前者的输出作为后者的输入
+   */
+  transformResponse?: AxiosTransformer | AxiosTransformer[];
+
   [prodName: string]: any
 }
 
@@ -83,6 +95,10 @@ export interface AxiosInstance extends Axios {
   <T = any>(url: any, config?: AxiosRequestConfig): AxiosPromise<T>;
 }
 
+export interface AxiosStatic extends AxiosInstance {
+  create: (config?: AxiosRequestConfig) => AxiosInstance
+}
+
 /** 拦截器管理类型 */
 export interface AxiosInterceptorManager<T = any> {
   // 添加拦截器，返回拦截器在拦截器容器中的id
@@ -98,4 +114,8 @@ export interface ResolvedFn<T = any> {
 
 export interface RejectFn {
   (val: any): any;
+}
+
+export interface AxiosTransformer {
+  (data: any, headers?: any): any
 }
