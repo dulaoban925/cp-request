@@ -8,7 +8,7 @@ import { createError } from "../helpers/error";
  */
 export function xhr(config: AxiosRequestConfig): AxiosPromise {
     return new Promise((resolve, reject) => {
-        const { url, method = 'GET', data = null, headers, responseType, timeout } = config;
+        const { url, method = 'GET', data = null, headers, responseType, timeout, cancelToken } = config;
         const request = new XMLHttpRequest();
         if (responseType) {
             request.responseType = responseType;
@@ -16,6 +16,15 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         if (timeout) {
             request.timeout = timeout;
         }
+
+        // 允许主动取消请求
+        if (cancelToken) {
+          cancelToken.promise.then(reason => {
+            request.abort();
+            reject(reason);
+          });
+        }
+
         request.open(method.toUpperCase(), url!, true);
         request.onreadystatechange = function handleLoad() {
             // 请求未结束，不执行后续逻辑

@@ -38,6 +38,8 @@ export interface AxiosRequestConfig {
    * 如果是数组，数组的每一个函数都是转换函数，像管道一样依次执行，前者的输出作为后者的输入
    */
   transformResponse?: AxiosTransformer | AxiosTransformer[];
+  /** 用于在请求结束前，主动取消请求 */
+  cancelToken?: CancelToken;
 
   [prodName: string]: any
 }
@@ -96,7 +98,11 @@ export interface AxiosInstance extends Axios {
 }
 
 export interface AxiosStatic extends AxiosInstance {
-  create: (config?: AxiosRequestConfig) => AxiosInstance
+  create: (config?: AxiosRequestConfig) => AxiosInstance;
+
+  CancelToken: CancelTokenStatic;
+  Cancel: CancelStatic;
+  isCancel: (value: any) => boolean;
 }
 
 /** 拦截器管理类型 */
@@ -109,13 +115,51 @@ export interface AxiosInterceptorManager<T = any> {
 }
 
 export interface ResolvedFn<T = any> {
-  (val: T): T | Promise<T>
+  (val: T): T | Promise<T>;
 }
 
 export interface RejectFn {
   (val: any): any;
 }
 
+/** Axios 请求/响应数据转换函数 */
 export interface AxiosTransformer {
-  (data: any, headers?: any): any
+  (data: any, headers?: any): any;
+}
+
+/** cancelToken 取消请求相关 */
+export interface CancelToken {
+  promise: Promise<Cancel>;
+  reason?: Cancel; // 取消请求原因
+
+  throwIfRequested(): void;
+}
+
+export interface Canceler {
+  (reason?: string): void;
+}
+
+export interface CancelExecutor {
+  (executor: Canceler): void;
+}
+
+export interface CancelTokenSource {
+  cancel: Canceler;
+  token: CancelToken;
+}
+
+/** CancelToken 类的类类型 */
+export interface CancelTokenStatic {
+  new(executor: CancelExecutor): CancelToken;
+
+  source(): CancelTokenSource;
+}
+
+export interface Cancel {
+  message?: string;
+}
+
+/** Cancel 类的类类型 */
+export interface CancelStatic {
+  new(message?: string): Cancel;
 }
