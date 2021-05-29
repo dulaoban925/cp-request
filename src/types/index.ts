@@ -43,6 +43,15 @@ export interface AxiosRequestConfig {
   /** 跨域 CORS 允许携带cookie */
   withCredentials?: boolean;
 
+  /**
+   * XSRF (跨站请求伪造） 相关
+   * 为防止 XSRF 攻击，服务器要求每次请求都携带一个 token，token 在后端生成并通过 set-cookie 种到前端
+   * 客户端请求时从 cookie 中取对一个的 token 并添加到 headers 中
+   * 服务端从请求 headers 中读取 token 并验证，该 token 有后端生成，很难伪造
+   */
+  xsrfCookieName?: string; // cookie 中存放 xsrf token 的名称
+  xsrfHeaderName?: string; // header 中传递 xsrf token 的属性名
+
   [prodName: string]: any
 }
 
