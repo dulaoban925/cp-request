@@ -22,6 +22,7 @@
     },
     "homepage": "",
     "devDependencies": {
+        "cookie-parser": "^1.4.5",
         "vuepress": "^1.0.0-alpha.44"
     }
 }

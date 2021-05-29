@@ -40,6 +40,8 @@ export interface AxiosRequestConfig {
   transformResponse?: AxiosTransformer | AxiosTransformer[];
   /** 用于在请求结束前，主动取消请求 */
   cancelToken?: CancelToken;
+  /** 跨域 CORS 允许携带cookie */
+  withCredentials?: boolean;
 
   [prodName: string]: any
 }

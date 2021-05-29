@@ -8,7 +8,7 @@ import { createError } from "../helpers/error";
  */
 export function xhr(config: AxiosRequestConfig): AxiosPromise {
     return new Promise((resolve, reject) => {
-        const { url, method = 'GET', data = null, headers, responseType, timeout, cancelToken } = config;
+        const { url, method = 'GET', data = null, headers, responseType, timeout, cancelToken, withCredentials } = config;
         const request = new XMLHttpRequest();
         if (responseType) {
             request.responseType = responseType;
@@ -23,6 +23,10 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
             request.abort();
             reject(reason);
           });
+        }
+        // 跨域允许携带 Cookie
+        if (withCredentials) {
+            request.withCredentials = withCredentials;
         }
 
         request.open(method.toUpperCase(), url!, true);
