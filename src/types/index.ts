@@ -65,6 +65,10 @@ export interface AxiosRequestConfig {
    */
   onDownloadProgress?: (e: ProgressEvent) => void;
   onUploadProgress?: (e: ProgressEvent) => void;
+  /**
+   * 自定义合法状态码
+   */
+  validateStatus?: (status: number) => boolean;
 
   [prodName: string]: any
 }

@@ -96,33 +96,35 @@ import NProgress from 'nprogress'
 /**
  * 测试 http 授权，auth 配置
  */
-axios.post('/more/post', {
-  a: 1
-}, {
-  auth: {
-    username: 'Yee',
-    password: '123456'
-  }
-}).then(res => {
-  console.log(res)
-})
-
-
-// axios.get('/more/304').then(res => {
-//   console.log(res)
-// }).catch((e: AxiosError) => {
-//   console.log(e.message)
-// })
-//
-// axios.get('/more/304', {
-//   validateStatus(status) {
-//     return status >= 200 && status < 400
+// axios.post('/more/post', {
+//   a: 1
+// }, {
+//   auth: {
+//     username: 'Yee',
+//     password: '123456'
 //   }
 // }).then(res => {
 //   console.log(res)
-// }).catch((e: AxiosError) => {
-//   console.log(e.message)
 // })
+
+/**
+ * 测试自定义合法状态码
+ */
+axios.get('/more/304').then(res => {
+  console.log(res)
+}).catch((e: AxiosError) => {
+  console.log(e.message)
+})
+
+axios.get('/more/304', {
+  validateStatus(status) {
+    return status >= 200 && status < 400
+  }
+}).then(res => {
+  console.log(res)
+}).catch((e: AxiosError) => {
+  console.log(e.message)
+})
 //
 // axios.get('/more/get', {
 //   params: new URLSearchParams('a=b&c=d')

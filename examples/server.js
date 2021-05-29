@@ -222,11 +222,11 @@ function registerMoreRouter() {
             res.end('UnAuthorization')
         }
     })
-    //
-    // router.get('/more/304', function (req, res) {
-    //     res.status(304)
-    //     res.end()
-    // })
+
+    router.get('/more/304', function (req, res) {
+        res.status(304)
+        res.end()
+    })
     //
     // router.get('/more/A', function (req, res) {
     //     res.end('A')

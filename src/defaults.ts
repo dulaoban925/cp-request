@@ -19,25 +19,29 @@ const defaults: AxiosRequestConfig = {
   },
 
   transformRequest: [function(data: any, headers?: any): any {
-    processHeaders(headers, data);
-    return transformRequest(data);
+    processHeaders(headers, data)
+    return transformRequest(data)
   }],
   transformResponse: [function(data: any): any {
-    return transformResponse(data);
-  }]
+    return transformResponse(data)
+  }],
+
+  validateStatus(status): boolean {
+    return status >= 200 && status <= 300
+  }
 }
 
 // 为不同的请求方法添加默认 headers 配置
-const methodsWithoutData = ['get', 'delete', 'head', 'options'];
+const methodsWithoutData = ['get', 'delete', 'head', 'options']
 methodsWithoutData.forEach(method => {
-  defaults.headers[method] = {};
+  defaults.headers[method] = {}
 })
 
-const methodsWithData = ['post', 'put', 'patch'];
+const methodsWithData = ['post', 'put', 'patch']
 methodsWithData.forEach(method => {
   defaults.headers[method] = {
     'Content-Type': 'application/x-www-form-urlencoded'
-  };
+  }
 })
 
-export default defaults;
+export default defaults

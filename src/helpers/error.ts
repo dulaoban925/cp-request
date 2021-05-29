@@ -26,7 +26,7 @@ export class AxiosError extends Error {
     this.isAxiosError = true;
 
     // 手动调整 this 原型，解决 TypeScript 继承 Error 类造成的问题
-    // 详见 TypeScritp-Wiki：https://github.com/microsoft/TypeScript-wiki/blob/master/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
+    // 详见 TypeScript-Wiki：https://github.com/microsoft/TypeScript-wiki/blob/master/Breaking-Changes.md#extending-built-ins-like-error-array-and-map-may-no-longer-work
     Object.setPrototypeOf(this, AxiosError.prototype);
   }
 }

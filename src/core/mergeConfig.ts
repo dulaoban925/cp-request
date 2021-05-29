@@ -8,13 +8,13 @@ import { deepMerge, isPlainObject } from '../helpers/util'
 function defaultStrategy(val1: any, val2: any): any {
   return typeof val2 !== 'undefined' ? val2 : val1;
 }
-
+/** 合并策略，仅使用val2 */
 function fromVal2Strategy(val1: any, val2: any): any {
   if (typeof val2 !== 'undefined') {
     return val2;
   }
 }
-
+/** 合并策略，深度合并，常用语对象类型的配置项，如 headers */
 function deepMergeStrategy(val1: any, val2: any): any {
   if (isPlainObject(val2)) {
     return deepMerge(val1, val2);
@@ -34,7 +34,7 @@ stratKeysFromVal2.forEach(key => {
   strats[key] = fromVal2Strategy;
 })
 
-const stratKeysDeepMerge = ['headers'];
+const stratKeysDeepMerge = ['headers', 'auth'];
 stratKeysDeepMerge.forEach(key => {
   strats[key] = deepMergeStrategy;
 })
