@@ -18,6 +18,11 @@ export function isPlainObject(val: any): val is Object {
   return toString.apply(val) === '[object Object]'
 }
 
+/** 是否为 FormData 类型 */
+export function isFormData(val: any): val is FormData {
+  return typeof val !== 'undefined' && val instanceof FormData
+}
+
 /** 混合类型，将 from 的实例属性和原型属性合并到 to */
 export function extend<T, U>(to: T, from: U): T & U {
   for (const key in from) {
@@ -28,22 +33,22 @@ export function extend<T, U>(to: T, from: U): T & U {
 
 /** 深度合并多个对象 */
 export function deepMerge(...objs: any[]): any {
-  const result = Object.create(null);
+  const result = Object.create(null)
   objs.forEach(obj => {
     if (obj) {
       Object.keys(obj).forEach(key => {
-        const val = obj[key];
+        const val = obj[key]
         if (isPlainObject(val)) {
           if (isPlainObject(result[key])) {
-            result[key] = deepMerge(result[key], val);
+            result[key] = deepMerge(result[key], val)
           } else {
-            result[key] = deepMerge(val);
+            result[key] = deepMerge(val)
           }
         } else {
-          result[key] = val;
+          result[key] = val
         }
       })
     }
   })
-  return result;
+  return result
 }

@@ -52,6 +52,12 @@ export interface AxiosRequestConfig {
   xsrfCookieName?: string; // cookie 中存放 xsrf token 的名称
   xsrfHeaderName?: string; // header 中传递 xsrf token 的属性名
 
+  /**
+   * 上传/下载进度监控
+   */
+  onDownloadProgress?: (e: ProgressEvent) => void;
+  onUploadProgress?: (e: ProgressEvent) => void;
+
   [prodName: string]: any
 }
 

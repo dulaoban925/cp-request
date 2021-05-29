@@ -1,16 +1,24 @@
 const express = require('express')
+// body-parser 插件用户请求体解析，获取请求数据
 const bodyParser = require('body-parser')
+// cookie-parser 插件用于 cookie 解析，获取请求的 cookie 数据
 const cookieParser = require('cookie-parser')
+// connect-multiparty 插件用于上传文件
+const multipart = require('connect-multiparty')
 const atob = require('atob')
 const webpack = require('webpack')
+// webpack-dev-middleware webpack 开发服务器中间件
 const webpackDevMiddleware = require('webpack-dev-middleware')
+// webpack-hot-middleware webpack 热加载中间件
 const webpackHotMiddleware = require('webpack-hot-middleware')
+
 const WebpackConfig = require('./webpack.config')
 const path = require('path')
 
 const app = express()
 const compiler = webpack(WebpackConfig)
 
+// 用于跨域 CORS 测试
 require('./server2.js');
 
 app.use(webpackDevMiddleware(compiler, {
@@ -35,6 +43,10 @@ app.use(bodyParser.urlencoded({
     extended: true
 }))
 app.use(cookieParser())
+
+app.use(multipart({
+    uploadDir: path.resolve(__dirname, 'upload-file')
+}))
 
 const router = express.Router()
 
@@ -193,10 +205,10 @@ function registerMoreRouter() {
         res.json(req.cookies)
     })
 
-    // router.post('/more/upload', function (req, res) {
-    //     console.log(req.body, req.files)
-    //     res.end('upload success!')
-    // })
+    router.post('/more/upload', function (req, res) {
+        console.log(req.body, req.files)
+        res.end('upload success!')
+    })
     //
     // router.post('/more/post', function (req, res) {
     //     const auth = req.headers.authorization
