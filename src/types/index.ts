@@ -53,6 +53,14 @@ export interface AxiosRequestConfig {
   xsrfHeaderName?: string; // header 中传递 xsrf token 的属性名
 
   /**
+   * HTTP 协议中的 Authorization header 头会包含服务器用于校验用户代理身份的凭证
+   * 通常在服务器返回 401 UnAuthorized 状态码以及 WWW-Authenticate 消息头之后在后续的请求中发送此消息头
+   * 若用户配置了 auth ，ts-axios 会自动向 HTTP 请求 header 中添加 Authorization 属性
+   * 自动添加的 Authorization 值为 Basic 加密串，加密串内容为：username:password 的Base64 格式
+   */
+  auth?: AxiosBasicCredential;
+
+  /**
    * 上传/下载进度监控
    */
   onDownloadProgress?: (e: ProgressEvent) => void;
@@ -179,4 +187,10 @@ export interface Cancel {
 /** Cancel 类的类类型 */
 export interface CancelStatic {
   new(message?: string): Cancel;
+}
+
+/** auth 类型 */
+export interface AxiosBasicCredential {
+  username: string,
+  password: string
 }

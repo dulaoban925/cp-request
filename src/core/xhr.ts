@@ -23,7 +23,8 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
       xsrfCookieName,
       xsrfHeaderName,
       onDownloadProgress,
-      onUploadProgress
+      onUploadProgress,
+      auth
     } = config
     const request = new XMLHttpRequest()
     request.open(method.toUpperCase(), url!, true)
@@ -93,7 +94,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
       // 如果请求的数据是 FormData 类型，删除 headers 中的 Content-Type 字段，让浏览器自动根据请求数据设置
       //
       if (isFormData(data)) {
-        delete headers['Content-Type'];
+        delete headers['Content-Type']
       }
       /**
        * 若 withCredential 为 true 或为同源请求，对 headers 添加 xsrf 相关的字段
@@ -105,6 +106,10 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         if (xsrfValue && xsrfHeaderName) {
           headers[xsrfHeaderName] = xsrfValue
         }
+      }
+      // 若配置了 auth ，自动向 headers 中添加 Authorization 属性
+      if (auth) {
+        headers['Authorization'] = `Basic ${btoa(`${auth.username}:${auth.password}`)}`
       }
       // 循环设置每个 headers 配置
       Object.keys(headers).forEach((name) => {
