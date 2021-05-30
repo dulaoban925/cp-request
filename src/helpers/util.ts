@@ -23,6 +23,11 @@ export function isFormData(val: any): val is FormData {
   return typeof val !== 'undefined' && val instanceof FormData
 }
 
+/** 是否为 URLSearchParams 类型 */
+export function isURLSearchParams(val: any): boolean {
+  return typeof val !== 'undefined' && val instanceof URLSearchParams
+}
+
 /** 混合类型，将 from 的实例属性和原型属性合并到 to */
 export function extend<T, U>(to: T, from: U): T & U {
   for (const key in from) {
