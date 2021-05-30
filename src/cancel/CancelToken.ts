@@ -2,7 +2,7 @@ import { Canceler, CancelExecutor, CancelTokenSource } from '../types'
 import Cancel from './Cancel'
 
 interface ResolvePromise {
-  (reason?: Cancel): void;
+  (reason: Cancel): void;
 }
 
 /**
