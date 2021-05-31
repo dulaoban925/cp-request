@@ -73,7 +73,7 @@ export function buildURL(url: string, params?: any, paramsSerializer?: (params: 
   }
 
   if (serializedParams) {
-    const hashIndex = serializedParams.indexOf('#')
+    const hashIndex = url.indexOf('#')
     if (hashIndex > -1) {
       // 丢弃URL中的hash标记
       url = url.slice(0, hashIndex)
@@ -85,7 +85,7 @@ export function buildURL(url: string, params?: any, paramsSerializer?: (params: 
 }
 
 export function isAbsoluteURL(url: string) {
-  return /^([a-z][a-z\d\+\-\.]*:)\/\//i.test(url)
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
 }
 
 export function combineURL(baseURL: string, relativeURL?: string) {
@@ -103,7 +103,7 @@ const urlParsingNode = document.createElement('a')
 const currentOrigin = resolveURL(window.location.href)
 
 /** 解析 url，获取源，包括协议 protocol 和 域名 host */
-export function resolveURL(url: string): URLOrigin {
+function resolveURL(url: string): URLOrigin {
   urlParsingNode.setAttribute('href', url)
   const { protocol, host } = urlParsingNode
   return {

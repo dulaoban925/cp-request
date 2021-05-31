@@ -1,7 +1,7 @@
 {
   "name": "ts-axios",
-  "version": "0.0.0",
-  "description": "",
+  "version": "1.0.0",
+  "description": "TS 重构 Axios",
   "keywords": [],
   "main": "dist/ts-axios.umd.js",
   "module": "dist/ts-axios.es5.js",
@@ -9,10 +9,10 @@
   "files": [
     "dist"
   ],
-  "author": "李莹 <13975145507@163.com>",
+  "author": "LiYing <13975145507@163.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ying2gege/ts-axios"
   },
   "license": "MIT",
   "engines": {
