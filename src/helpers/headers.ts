@@ -5,52 +5,49 @@ import { Method } from '../types'
 /** 将 headers 的属性名称标准化，如支持前端配置名称为 content-type， 但是需要转为 Content-Type */
 function normalizeHeaderName(headers: any, normalizedName: string): void {
   if (!headers) {
-    return;
+    return
   }
-  Object.keys(headers).forEach((name) => {
+  Object.keys(headers).forEach(name => {
     if (name !== normalizedName && name.toUpperCase() === normalizedName.toUpperCase()) {
-      headers[normalizedName] = headers[name];
-      delete headers[name];
+      headers[normalizedName] = headers[name]
+      delete headers[name]
     }
   })
 }
 
 /** 处理请求头 headers 配置 */
 export function processHeaders(headers: any, data: any): any {
-  normalizeHeaderName(headers, 'Content-Type');
+  normalizeHeaderName(headers, 'Content-Type')
   if (isPlainObject(data)) {
     if (headers && !headers['Content-Type']) {
       headers['Content-Type'] = 'application/json;charset=utf-8'
     }
   }
-  return headers;
+  return headers
 }
 
 /** 解析响应头 headers 字符串，返回对象结构 */
 export function parseHeaders(headers: string): any {
-  const parsed = Object.create(null);
+  const parsed = Object.create(null)
   if (!headers) {
-    return parsed;
+    return parsed
   }
-  headers.split('\r\n').forEach((line) => {
-    let [key, value] = line.split(':');
-    key = key.trim().toLowerCase();
+  headers.split('\r\n').forEach(line => {
+    let [key, ...values] = line.split(':')
+    key = key.trim().toLowerCase()
     if (!key) {
-      return;
+      return
     }
-    if (value) {
-      value = value.trim();
-    }
-    parsed[key] = value;
+    parsed[key] = values.join(':').trim()
   })
 
-  return parsed;
+  return parsed
 }
 
 /** 平铺默认 headers 配置 */
 export function flattenHeaders(headers: any, method: Method): any {
   if (!headers) {
-    return headers;
+    return headers
   }
   /**
    * 默认 headers 配置结构
@@ -59,12 +56,12 @@ export function flattenHeaders(headers: any, method: Method): any {
    *   post: {} // 指定请求方法的 headers 配置
    * }
    */
-  headers = deepMerge(headers.common, headers[method], headers);
+  headers = deepMerge(headers.common, headers[method], headers)
   // 需要从 headers 中删除的属性
-  const propsToDelete = ['common', 'get', 'post', 'delete', 'put', 'head', 'options', 'patch'];
+  const propsToDelete = ['common', 'get', 'post', 'delete', 'put', 'head', 'options', 'patch']
   propsToDelete.forEach(prop => {
-    delete headers[prop];
+    delete headers[prop]
   })
 
-  return headers;
+  return headers
 }
