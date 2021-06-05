@@ -72,7 +72,8 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
           return
         }
         const responseHeaders = parseHeaders(request.getAllResponseHeaders())
-        const responseData = responseType && responseType === 'text' ? request.responseText : request.response
+        const responseData =
+          responseType && responseType === 'text' ? request.responseText : request.response
         const response: AxiosResponse = {
           data: responseData,
           status: request.status,
@@ -113,7 +114,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         headers['Authorization'] = `Basic ${btoa(`${auth.username}:${auth.password}`)}`
       }
       // 循环设置每个 headers 配置
-      Object.keys(headers).forEach((name) => {
+      Object.keys(headers).forEach(name => {
         if (data === null && name.toLowerCase() === 'content-type') {
           delete headers[name]
         } else {
@@ -125,10 +126,18 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
     function processCancel(): void {
       // 允许主动取消请求
       if (cancelToken) {
-        cancelToken.promise.then(reason => {
-          request.abort()
-          reject(reason)
-        })
+        cancelToken.promise
+          .then(reason => {
+            request.abort()
+            reject(reason)
+          })
+          .catch(
+            // 添加注释，忽略该部分代码的测试
+            /* istanbul ignore next */
+            () => {
+              // 不需要处理
+            }
+          )
       }
     }
 
@@ -137,7 +146,15 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
       if (!validateStatus || validateStatus(response.status)) {
         resolve(response)
       } else {
-        reject(createError(`Request failed with status code ${response.status}`, config, null, request, response))
+        reject(
+          createError(
+            `Request failed with status code ${response.status}`,
+            config,
+            null,
+            request,
+            response
+          )
+        )
       }
     }
   })

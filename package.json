@@ -1,6 +1,6 @@
 {
-  "name": "ts-axiox",
-  "version": "0.0.0",
+  "name": "ly-axiox",
+  "version": "0.0.1",
   "description": "",
   "keywords": [],
   "main": "dist/axios.umd.js",
