@@ -14,21 +14,21 @@ import InterceptorManager from './InterceptorManager'
 import mergeConfig from './mergeConfig'
 
 interface PromiseChain<T> {
-  resolved: ResolvedFn<T> | ((config: AxiosRequestConfig) => AxiosPromise),
+  resolved: ResolvedFn<T> | ((config: AxiosRequestConfig) => AxiosPromise)
   rejected?: RejectFn
 }
 
 interface Interceptors {
-  request: InterceptorManager<AxiosRequestConfig>,
+  request: InterceptorManager<AxiosRequestConfig>
   response: InterceptorManager<AxiosResponse>
 }
 
 export default class Axios {
-  defaults: AxiosRequestConfig;
-  interceptors: Interceptors;
+  defaults: AxiosRequestConfig
+  interceptors: Interceptors
 
   constructor(initConfig: AxiosRequestConfig) {
-    this.defaults = initConfig;
+    this.defaults = initConfig
     this.interceptors = {
       request: new InterceptorManager<AxiosRequestConfig>(),
       response: new InterceptorManager<AxiosResponse>()
@@ -41,14 +41,17 @@ export default class Axios {
     } else {
       config = url
     }
-    config = mergeConfig(this.defaults, config);
+    config = mergeConfig(this.defaults, config)
+    config.method = config.method.toLowerCase()
 
     // 拦截器链式调用
     // axios.interceptors.request.use、axios.interceptors.response.use
-    const chain: PromiseChain<any>[] = [{
-      resolved: dispatchRequest,
-      rejected: undefined
-    }]
+    const chain: PromiseChain<any>[] = [
+      {
+        resolved: dispatchRequest,
+        rejected: undefined
+      }
+    ]
 
     // 拦截器工作流程：request 拦截器 -》send request -》response 拦截器
     // request 拦截器后添加的先调用
@@ -98,22 +101,26 @@ export default class Axios {
   }
 
   getUri(config?: AxiosRequestConfig): string {
-    config = mergeConfig(this.defaults, config);
-    return transformURL(config);
+    config = mergeConfig(this.defaults, config)
+    return transformURL(config)
   }
 
   _requestMethodWithoutData(method: Method, url: string, config?: AxiosRequestConfig) {
-    return this.request(Object.assign(config || {}, {
-      method,
-      url
-    }))
+    return this.request(
+      Object.assign(config || {}, {
+        method,
+        url
+      })
+    )
   }
 
   _requestMethodWithData(method: Method, url: string, data?: any, config?: AxiosRequestConfig) {
-    return this.request(Object.assign(config || {}, {
-      method,
-      url,
-      data
-    }))
+    return this.request(
+      Object.assign(config || {}, {
+        method,
+        url,
+        data
+      })
+    )
   }
 }
