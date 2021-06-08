@@ -15,7 +15,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
       url,
       method = 'GET',
       data = null,
-      headers,
+      headers = {},
       responseType,
       timeout,
       cancelToken,
@@ -94,7 +94,6 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
 
     function processHeaders(): void {
       // 如果请求的数据是 FormData 类型，删除 headers 中的 Content-Type 字段，让浏览器自动根据请求数据设置
-      //
       if (isFormData(data)) {
         delete headers['Content-Type']
       }
