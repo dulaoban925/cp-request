@@ -10,6 +10,8 @@ export class AxiosError extends Error {
   request?: any // 请求 XMLHttpRequest 对象实例
   response?: AxiosResponse // 请求响应结果
 
+  // 以下注释表示单元测试忽略当前构造函数，切记不能滥用；此处由于继承 Error 类导致不能覆盖到所有的测试分支，因此可以忽略
+  /* istanbul ignore next  */
   constructor(
     message: string,
     config: AxiosRequestConfig,

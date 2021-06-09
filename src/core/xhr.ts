@@ -13,7 +13,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
   return new Promise((resolve, reject) => {
     const {
       url,
-      method = 'GET',
+      method,
       data = null,
       headers = {},
       responseType,
@@ -28,7 +28,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
       validateStatus
     } = config
     const request = new XMLHttpRequest()
-    request.open(method.toUpperCase(), url!, true)
+    request.open(method!.toUpperCase(), url!, true)
 
     configureRequest()
 
@@ -73,7 +73,7 @@ export function xhr(config: AxiosRequestConfig): AxiosPromise {
         }
         const responseHeaders = parseHeaders(request.getAllResponseHeaders())
         const responseData =
-          responseType && responseType === 'text' ? request.responseText : request.response
+          responseType && responseType !== 'text' ? request.response : request.responseText
         const response: AxiosResponse = {
           data: responseData,
           status: request.status,

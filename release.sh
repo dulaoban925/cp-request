@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 set -e
 echo "Enter Release Version: "
-read "$VERSION"
-read -p "Release $VERSION - are you sure? (y/n)" -n -1 -r
+read $VERSION
+read -p "Release $VERSION - are you sure? (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]];
 then
