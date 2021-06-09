@@ -94,4 +94,4 @@ router.post('/more/post', function(req, res) {
 
 注意，这里我们需要安装第三方库 `atob` 实现 base64 串的解码。
 
-至此，`ts-axios` 支持了 HTTP 授权功能，用户可以通过配置 auth 对象实现自动在请求 header 中添加 `Authorization` 属性。下一节课我们来实现自定义合法状态码功能。
+至此，`cp-request` 支持了 HTTP 授权功能，用户可以通过配置 auth 对象实现自动在请求 header 中添加 `Authorization` 属性。下一节课我们来实现自定义合法状态码功能。

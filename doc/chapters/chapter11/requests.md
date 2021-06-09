@@ -380,4 +380,4 @@ export default function dispatchRequest(config: AxiosRequestConfig): AxiosPromis
 
 除了对正常情况的响应数据做转换，我们也需要对异常情况的响应数据做转换。
 
-至此我们完成了 `ts-axios` 库对请求模块的测试，下一节课我们会从业务的角度来测试 `headers` 模块。
+至此我们完成了 `cp-request` 库对请求模块的测试，下一节课我们会从业务的角度来测试 `headers` 模块。

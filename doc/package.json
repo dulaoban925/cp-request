@@ -1,7 +1,7 @@
 {
-    "name": "ts-axios-doc",
+    "name": "cp-request-doc",
     "version": "1.0.0",
-    "description": "doc for ts-axios",
+    "description": "doc for cp-request",
     "main": "index.js",
     "directories": {
         "doc": "chapters"

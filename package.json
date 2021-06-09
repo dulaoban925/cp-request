@@ -1,6 +1,6 @@
 {
-  "name": "ly-axiox",
-  "version": "0.0.1",
+  "name": "cp-request",
+  "version": "0.1.1",
   "description": "",
   "keywords": [],
   "main": "dist/axios.umd.js",
@@ -12,7 +12,7 @@
   "author": "LiYing <13975145507@163.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ying2gege/ts-axios"
+    "url": "https://github.com/ying2gege/cp-request"
   },
   "license": "MIT",
   "engines": {
@@ -139,7 +139,7 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-loader": "^3.5.4",
     "typedoc": "^0.20.36",
-    "typescript": "^3.4.5",
+    "typescript": "^4.2.3",
     "webpack": "^4.28.4",
     "webpack-dev-middleware": "^3.5.0",
     "webpack-hot-middleware": "^2.24.3"

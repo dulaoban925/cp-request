@@ -18,13 +18,13 @@
 ### 使用方式
 
 ```bash
-git clone https://github.com/alexjoverm/typescript-library-starter.git ts-axios
-cd ts-axios
+git clone https://github.com/alexjoverm/typescript-library-starter.git cp-request
+cd cp-request
 
 npm install
 ```
 
-先通过 `git clone` 把项目代码拉下来到我们的 `ts-axios` 目录，然后运行 `npm install` 安装依赖，并且给项目命名，我们仍然使用 `ts-axios`。
+先通过 `git clone` 把项目代码拉下来到我们的 `cp-request` 目录，然后运行 `npm install` 安装依赖，并且给项目命名，我们仍然使用 `cp-request`。
 
 安装好依赖后，我们先来预览一下这个项目的目录结构。
 

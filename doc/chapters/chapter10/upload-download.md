@@ -350,5 +350,5 @@ router.post('/more/upload', function(req, res) {
 
 为了保证代码正常运行，我们还需要在 `examples/webpack.config.js` 中添加 `css-loader` 和 `css-loader`，不要忘记先安装它们。
 
-至此，`ts-axios` 支持了上传下载进度事件的回调函数的配置，用户可以通过配置这俩函数实现对下载进度和上传进度的监控。下一节课我们来实现 http 的认证授权功能。
+至此，`cp-request` 支持了上传下载进度事件的回调函数的配置，用户可以通过配置这俩函数实现对下载进度和上传进度的监控。下一节课我们来实现 http 的认证授权功能。
 

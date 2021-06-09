@@ -2,7 +2,7 @@
 
 ## 准备工作
 
-通常我们会优先为一个库的辅助方法编写测试，我们会优先为 `ts-axios` 库的 `helpers` 目录下的模块编写测试。我们在 `test` 目录下创建一个 `helpers` 目录，创建一个 `boot.ts` 空文件，这个是因为我们上节课给 Jest 配置了 `setupFilesAfterEnv` 指向了这个文件，后面的章节我们会编写这个文件。
+通常我们会优先为一个库的辅助方法编写测试，我们会优先为 `cp-request` 库的 `helpers` 目录下的模块编写测试。我们在 `test` 目录下创建一个 `helpers` 目录，创建一个 `boot.ts` 空文件，这个是因为我们上节课给 Jest 配置了 `setupFilesAfterEnv` 指向了这个文件，后面的章节我们会编写这个文件。
 
 然后我们可以在控制台运行 `npm test`，它实际上是执行了 `jest --coverage` 来跑单元测试，我们会发现它会报错，没有匹配的测试文件，那是因为我们还没有在 `test` 目录下编写任何一个 .spec.ts 结尾的测试文件。接下来我们就来为这些辅助模块编写相应的测试。
 
@@ -531,5 +531,5 @@ describe('helpers:url', () => {
 
 这里要注意的是，我们使用了 [`jest.fn`](https://jestjs.io/docs/en/jest-object#jestfnimplementation) 去模拟了一个函数，这个也是在编写 Jest 测试中非常常用的一个 API。
 
-至此，我们就实现了 `ts-axios` 库 `helpers` 目录下所有模块的测试，并把该目录下的测试覆盖率达到了近乎 100% 的覆盖率。下面的章节我们就开始测试 `ts-axios` 的核心流程，针对不同的 `feature` 去编写单元测试了。
+至此，我们就实现了 `cp-request` 库 `helpers` 目录下所有模块的测试，并把该目录下的测试覆盖率达到了近乎 100% 的覆盖率。下面的章节我们就开始测试 `cp-request` 的核心流程，针对不同的 `feature` 去编写单元测试了。
 

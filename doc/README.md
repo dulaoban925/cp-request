@@ -1,4 +1,4 @@
-# ts-axios-doc
+# cp-request-doc
 
 TypeScript 从零实现 axios 需求文档
 
@@ -22,4 +22,4 @@ npm install
 npm run dev
 ```
 
-4.浏览器打开 `http://localhost:8080/ts-axios/` 即可。
+4.浏览器打开 `http://localhost:8080/cp-request/` 即可。

@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/ts-axios/',
+    base: '/cp-request/',
     dest: 'dist',
     title: 'TypeScript 从零实现 axios',
     description: '学习使用 TypeScript 从零实现 axios 库',
@@ -31,7 +31,7 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 项目初始化',
+                'title': 'cp-request 项目初始化',
                 collapsable: false,
                 children: [
                     'chapter3/require',
@@ -40,7 +40,7 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 基础功能实现',
+                'title': 'cp-request 基础功能实现',
                 collapsable: false,
                 children: [
                     'chapter4/url',
@@ -52,7 +52,7 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 异常情况处理',
+                'title': 'cp-request 异常情况处理',
                 collapsable: false,
                 children: [
                     'chapter5/error',
@@ -60,7 +60,7 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 接口扩展',
+                'title': 'cp-request 接口扩展',
                 collapsable: false,
                 children: [
                     'chapter6/extend',
@@ -69,14 +69,14 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 拦截器实现',
+                'title': 'cp-request 拦截器实现',
                 collapsable: false,
                 children: [
                     'chapter7/interceptor'
                 ]
             },
             {
-                'title': 'ts-axios 配置化实现',
+                'title': 'cp-request 配置化实现',
                 collapsable: false,
                 children: [
                     'chapter8/merge',
@@ -85,14 +85,14 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 取消功能实现',
+                'title': 'cp-request 取消功能实现',
                 collapsable: false,
                 children: [
                     'chapter9/cancel'
                 ]
             },
             {
-                'title': 'ts-axios 更多功能实现',
+                'title': 'cp-request 更多功能实现',
                 collapsable: false,
                 children: [
                     'chapter10/withCredentials',
@@ -106,7 +106,7 @@ module.exports = {
                 ]
             },
             {
-                'title': 'ts-axios 单元测试',
+                'title': 'cp-request 单元测试',
                 collapsable: false,
                 children: [
                     'chapter11/preface',

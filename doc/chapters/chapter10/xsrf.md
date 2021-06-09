@@ -8,7 +8,7 @@ XSRF 又名 [CSRF](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Fi
 
 CSRF 的防御手段有很多，比如验证请求的 referer，但是 referer 也是可以伪造的，所以杜绝此类攻击的一种方式是服务器端要求每次请求都包含一个 `token`，这个 `token` 不在前端生成，而是在我们每次访问站点的时候生成，并通过 `set-cookie` 的方式种到客户端，然后客户端发送请求的时候，从 `cookie` 中对应的字段读取出 `token`，然后添加到请求 `headers` 中。这样服务端就可以从请求 `headers` 中读取这个 `token` 并验证，由于这个 `token` 是很难伪造的，所以就能区分这个请求是否是用户正常发起的。
 
-对于我们的 `ts-axios` 库，我们要自动把这几件事做了，每次发送请求的时候，从 `cookie` 中读取对应的 `token` 值，然后添加到请求 `headers`中。我们允许用户配置 `xsrfCookieName` 和 `xsrfHeaderName`，其中 `xsrfCookieName` 表示存储 `token` 的 `cookie` 名称，`xsrfHeaderName` 表示请求 `headers` 中 `token` 对应的 `header` 名称。
+对于我们的 `cp-request` 库，我们要自动把这几件事做了，每次发送请求的时候，从 `cookie` 中读取对应的 `token` 值，然后添加到请求 `headers`中。我们允许用户配置 `xsrfCookieName` 和 `xsrfHeaderName`，其中 `xsrfCookieName` 表示存储 `token` 的 `cookie` 名称，`xsrfHeaderName` 表示请求 `headers` 中 `token` 对应的 `header` 名称。
 
 ```typescript
 axios.get('/more/get',{
@@ -153,4 +153,4 @@ app.use(express.static(__dirname, {
 
 然后我们在前端发送请求的时候，就能从 cookie 中读出 `key` 为 `XSRF-TOKEN` 的值，然后把它添加到 `key` 为 `X-XSRF-TOKEN` 的请求 `headers` 中。
 
-至此，我们实现了 XSRF 的自动防御的能力，下节课我们来实现 ts-axios 对上传和下载请求的支持。
+至此，我们实现了 XSRF 的自动防御的能力，下节课我们来实现 cp-request 对上传和下载请求的支持。

@@ -1,7 +1,7 @@
 
 # 编写基础请求代码
 
-我们这节课开始编写 `ts-axios` 库，我们的目标是实现简单的发送请求功能，即客户端通过 `XMLHttpRequest` 对象把请求发送到 server 端，server 端能收到请求并响应即可。
+我们这节课开始编写 `cp-request` 库，我们的目标是实现简单的发送请求功能，即客户端通过 `XMLHttpRequest` 对象把请求发送到 server 端，server 端能收到请求并响应即可。
 
 我们实现 `axios` 最基本的操作，通过传入一个对象发送请求，如下：
 
@@ -287,11 +287,11 @@ module.exports = app.listen(port, () => {
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>ts-axios examples</title>
+    <title>cp-request examples</title>
     <link rel="stylesheet" href="/global.css">
   </head>
   <body style="padding: 0 20px">
-    <h1>ts-axios examples</h1>
+    <h1>cp-request examples</h1>
     <ul>
       <li><a href="simple">Simple</a></li>
     </ul>

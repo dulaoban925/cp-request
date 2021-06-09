@@ -92,7 +92,7 @@ instance({
 
 我们对上节课的示例做了小小的修改，通过 `axios.create` 方法创建一个新的实例 `instance`，并传入了 `transformRequest` 和 `transformResponse` 的配置修改了默认配置，然后通过 `instance` 发送请求，效果和之前是一样的。
 
-至此我们实现了 `axios.create` 静态接口的扩展，整个 `ts-axios` 的配置化也告一段落。官方 axios 库还支持了对请求取消的能力，在发送请求前以及请求发送出去未响应前都可以取消该请求。下一章我们就来实现这个 feature。
+至此我们实现了 `axios.create` 静态接口的扩展，整个 `cp-request` 的配置化也告一段落。官方 axios 库还支持了对请求取消的能力，在发送请求前以及请求发送出去未响应前都可以取消该请求。下一章我们就来实现这个 feature。
 
 
 

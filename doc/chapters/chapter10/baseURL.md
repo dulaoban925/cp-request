@@ -71,4 +71,4 @@ instance.get('https://img.mukewang.com/szimg/5becd5ad0001b89306000338-360-202.jp
 
 这个 demo 非常简单，我们请求了慕课网的 2 张图片，注意当第二个请求 `url` 已经是绝对地址的时候，我们并不会再去拼接 `baseURL`。
 
-至此，`ts-axios` 就实现了 `baseURL` 的配置功能，接下来我们来实现 `ts-axios` 的静态方法扩展。
+至此，`cp-request` 就实现了 `baseURL` 的配置功能，接下来我们来实现 `cp-request` 的静态方法扩展。

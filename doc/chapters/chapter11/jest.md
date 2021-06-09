@@ -145,7 +145,7 @@
 
 其他关于 Jest 的配置，感兴趣的同学可以去[官网](https://jestjs.io/docs/en/configuration)做扩展学习。
 
-至此，我们学习了 Jest 的安装和配置，下节课我们就开始编写 `ts-axios` 库的单元测试。
+至此，我们学习了 Jest 的安装和配置，下节课我们就开始编写 `cp-request` 库的单元测试。
 
 
 

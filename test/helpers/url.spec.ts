@@ -68,7 +68,7 @@ describe('helpers:url', () => {
 
   describe('isAbsoluteURL', () => {
     test('should return true if URL begins with valid scheme name', () => {
-      expect(isAbsoluteURL('https://github.com/ying2gege/ts-axios')).toBeTruthy()
+      expect(isAbsoluteURL('https://github.com/ying2gege/cp-request')).toBeTruthy()
       expect(isAbsoluteURL('custom-scheme-v1.0://example.com/')).toBeTruthy()
       expect(isAbsoluteURL('HTTP://example.com/')).toBeTruthy()
     })
@@ -77,25 +77,25 @@ describe('helpers:url', () => {
       expect(isAbsoluteURL('!valid://example.com/')).toBeFalsy()
     })
     test('should return true if URL is protocol-relative', () => {
-      expect(isAbsoluteURL('//github.com/ying2gege/ts-axios')).toBeTruthy()
+      expect(isAbsoluteURL('//github.com/ying2gege/cp-request')).toBeTruthy()
     })
     test('should return false if URL is path-relative', () => {
-      expect(isAbsoluteURL('/ying2gege/ts-axios')).toBeFalsy()
+      expect(isAbsoluteURL('/ying2gege/cp-request')).toBeFalsy()
     })
   })
 
   describe('combineURL', () => {
     test('should combine URL', () => {
-      expect(combineURL('https://github.com/', 'ying2gege/ts-axios')).toBe('https://github.com/ying2gege/ts-axios')
+      expect(combineURL('https://github.com/', 'ying2gege/cp-request')).toBe('https://github.com/ying2gege/cp-request')
     })
     test('should remove duplicate slashes', () => {
-      expect(combineURL('https://github.com/', '/ying2gege/ts-axios')).toBe('https://github.com/ying2gege/ts-axios')
+      expect(combineURL('https://github.com/', '/ying2gege/cp-request')).toBe('https://github.com/ying2gege/cp-request')
     })
     test('should insert missing slash', () => {
-      expect(combineURL('https://github.com', 'ying2gege/ts-axios')).toBe('https://github.com/ying2gege/ts-axios')
+      expect(combineURL('https://github.com', 'ying2gege/cp-request')).toBe('https://github.com/ying2gege/cp-request')
     })
     test('should not insert slash when relative URL is missing/empty', () => {
-      expect(combineURL('https://github.com/ying2gege/ts-axios', '')).toBe('https://github.com/ying2gege/ts-axios')
+      expect(combineURL('https://github.com/ying2gege/cp-request', '')).toBe('https://github.com/ying2gege/cp-request')
     })
     test('should allow a single slash for relative URL', () => {
       expect(combineURL('https://github.com/ying2gege', '/')).toBe('https://github.com/ying2gege/')
@@ -107,7 +107,7 @@ describe('helpers:url', () => {
       expect(isURLSameOrigin(window.location.href)).toBeTruthy()
     })
     test('should not detect same origin', () => {
-      expect(isURLSameOrigin('https://github.com/ying2gege/ts-axios')).toBeFalsy()
+      expect(isURLSameOrigin('https://github.com/ying2gege/cp-request')).toBeFalsy()
     })
   })
 })

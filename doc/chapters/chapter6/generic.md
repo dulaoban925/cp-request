@@ -151,4 +151,4 @@ test()
 
 这个也是 `const user = await getUser<User>()` 返回值 `user` 的数据类型，所以 TypeScript 能正确推断出 `user` 的类型。
 
-至此，我们的 `ts-axios` 接口扩展章节就告一段落了，下一章我们来实现 `axios` 的一个非常好用的功能 —— 拦截器。
+至此，我们的 `cp-request` 接口扩展章节就告一段落了，下一章我们来实现 `axios` 的一个非常好用的功能 —— 拦截器。

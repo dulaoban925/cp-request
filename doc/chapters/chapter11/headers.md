@@ -103,4 +103,4 @@ describe('headers', () => {
 
 内部定义了 `testHeaderValue` 辅助函数，用于测试 `headers` 是否存在某个 `header name` 下的某个值。
 
-至此我们完成了 `ts-axios` 库 `headers` 模块相关业务逻辑的测试，下一节课我们会对 `Axios` 的实例做测试。
+至此我们完成了 `cp-request` 库 `headers` 模块相关业务逻辑的测试，下一节课我们会对 `Axios` 的实例做测试。

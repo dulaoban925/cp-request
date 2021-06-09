@@ -1,6 +1,6 @@
 # Axios 实例模块单元测试
 
-`ts-axios` 提供了 `axios.create` 静态方法，返回一个 `instance` 实例，我们需要对这个模块做测试。
+`cp-request` 提供了 `axios.create` 静态方法，返回一个 `instance` 实例，我们需要对这个模块做测试。
 
 ## 测试代码编写
 
@@ -165,4 +165,4 @@ describe('instance', () => {
 })
 ```
 
-至此我们完成了 `ts-axios` 库 `Axios` 实例模块相关业务逻辑的测试，下一节课我们会对拦截器模块做测试。
+至此我们完成了 `cp-request` 库 `Axios` 实例模块相关业务逻辑的测试，下一节课我们会对拦截器模块做测试。

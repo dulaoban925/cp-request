@@ -2,7 +2,7 @@
 
 ## 需求分析
 
-之前 `ts-axios` 在处理响应结果的时候，认为 HTTP [status](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status) 在 200 和 300 之间是一个合法值，在这个区间之外则创建一个错误。有些时候我们想自定义这个规则，比如认为 304 也是一个合法的状态码，所以我们希望 `ts-axios` 能提供一个配置，允许我们自定义合法状态码规则。如下：
+之前 `cp-request` 在处理响应结果的时候，认为 HTTP [status](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/status) 在 200 和 300 之间是一个合法值，在这个区间之外则创建一个错误。有些时候我们想自定义这个规则，比如认为 304 也是一个合法的状态码，所以我们希望 `cp-request` 能提供一个配置，允许我们自定义合法状态码规则。如下：
 
 ```typescript
 axios.get('/more/304', {
@@ -102,4 +102,4 @@ router.get('/more/304', function(req, res) {
 
 接口返回 304 状态码，对于默认的请求我们会输出一条错误信息。第二个请求中我们配置了自定义合法状态码规则，区间在 200 和 400 之间，这样就不会报错，而是可以正常输出响应对象。
 
-至此 `ts-axios` 实现了自定义合法状态码功能，用户可以配置 `validateStatus` 自定义合法状态码规则。之前有同学会质疑 `ts-axios` 对于请求 `url` 参数的序列化处理规则，下一节课我们来实现自定义参数序列化规则功能。
+至此 `cp-request` 实现了自定义合法状态码功能，用户可以配置 `validateStatus` 自定义合法状态码规则。之前有同学会质疑 `cp-request` 对于请求 `url` 参数的序列化处理规则，下一节课我们来实现自定义参数序列化规则功能。

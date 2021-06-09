@@ -1,5 +1,5 @@
-# ts-axios
-使用TypeScript重构Axios
+# cp-request
+TypeScript 版 Axios
 
 ## 安装项目依赖
   
